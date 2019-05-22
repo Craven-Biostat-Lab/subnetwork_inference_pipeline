@@ -177,8 +177,7 @@ python ./scripts/eval_sample_results.py ./dump_folder ./hiv_0.75_hidden_by_sampl
 POST-PROCESSING
 bash ./scripts/sort_ip_by_kernel.sh pr_results hiv_0.75_kernel_hit_and_interface.list 
 
-E-Mail Sid once you are done with this step. 
-
+Use the resulting files in pr_results to generate pr curves 
 
 
 
