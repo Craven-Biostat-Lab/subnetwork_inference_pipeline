@@ -1,0 +1,18 @@
+How to run entire kernel method section of the pipeline.
+Dec 2014 chasman@cs.wisc.edu
+
+
+Run a test (quick):
+-------------------
+bash run_kernel_everything.sh samples_test input_networks/test.sif input_hits/test_hits.tab
+
+Arguments: 
+1: name of output directory to create (samples_test)
+2: location of background network sif file without HIV genes or human protein complexes (input_networks/test.sif)
+3: location of file listing all hits and interfaces to use as input to the kernel (input_hits/test_hits.tab)
+
+Run the baseline:
+-----------------
+bash run_kernel_everything.sh samples_baseline input_networks/hiv_len3_background_no_hiv_cx.sif input_hits/hits_plus_ints.tab
+
+

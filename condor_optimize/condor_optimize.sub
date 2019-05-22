@@ -1,0 +1,30 @@
+universe = vanilla
+log = logs/optimize_$(Process).log
+error = error/optimize_$(Process).err
+#
+# Specify your executable (single binary or a script that runs several
+#  commands), arguments, and a files for HTCondor to store standard
+#  output (or "screen output").
+#  $(Process) will be a integer number for each job, starting with "0"
+#  and increasing for the relevant number of jobs.
+executable = run_optimization.sh
+arguments = $(Process)
+output = output/optimize_$(Process).out
+#
+# Specify that HTCondor should transfer files to and from the
+#  computer where each job runs. The last of these lines *would* be
+#  used if there were any other files needed for the executable to run.
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = ./python.tar.gz,./run_optimization.sh,./data,./scripts,./model,./sample0.90/sample_0.90_$(Process)_hits.gms, ./sample0.90/sample_0.90_$(Process)_hits_hide.tab
+#transfer_ouput_files = ./run_sample_0.75_$(Process)_hits.gms 
+#
+# Tell HTCondor what amount of compute resources
+#  each job will need on the computer where it runs.
+request_cpus = 4
+request_memory = 32GB
+request_disk = 4GB
+requirements = (Target.HasGluster == true)
+#
+# Tell HTCondor to run 3 instances of our job:
+queue 1000
